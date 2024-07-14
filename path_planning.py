@@ -95,7 +95,7 @@ def ensure_path(start, goal, grid, previous_paths, increment, max_attempts=10):
             )
 
     # If still no path, try decreasing grid values
-    for attempt in range(max_attempts):
+    for attempt in range (max_attempts):
         grid *= 0.9  # Make the grid more traversable
         try:
             path, cost_estimates = path_planning(
@@ -113,7 +113,9 @@ def ensure_path(start, goal, grid, previous_paths, increment, max_attempts=10):
 def visualize_grid_with_paths(
     initial_grid, paths, start, goal, title="Grid with Paths"
 ):
-    fig, ax = plt.subplots()
+    # Increse figure size
+    fig, ax = plt.subplots(figsize=(10, 10))
+
     cax = ax.imshow(initial_grid, cmap="jet", interpolation="nearest")
     fig.colorbar(cax)
     colors = [
@@ -133,7 +135,7 @@ def visualize_grid_with_paths(
     ax.scatter([start[1]], [start[0]], color="cyan", label="Start")
     ax.scatter([goal[1]], [goal[0]], color="magenta", label="Goal")
     ax.set_title(title)
-    ax.legend()
+    ax.legend(loc='upper left', bbox_to_anchor=(-0.1, 1.1), borderaxespad=0.)
     plt.show(block=True)
 
 
